@@ -24,3 +24,10 @@ class Entity(Sprite):
         super().resize(w, h)
         self.colliosion_rect = pw.get_pygame().Rect(self.x, self.y, self.w, self.h)
 
+    def update(self, delta_time):
+        pass
+
+    def recaludate_collision_rect(self):
+        self.colliosion_rect = pw.get_pygame().Rect(self.x, self.y, self.w, self.h)
+
+

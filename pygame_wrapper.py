@@ -29,6 +29,10 @@ class PygameWrapper(object):
     def get_surface(cls):
         return cls._surface
 
+
+    @classmethod
+    def is_key_down(cls, key):
+        return cls._pygame.key.get_pressed()[key]
     @classmethod
     def loop(cls, update_callback, render_callback):
         running = True
@@ -41,15 +45,6 @@ class PygameWrapper(object):
                     cls._pygame.display.update()
                     cls.resize_window(event.dict['size'][0], event.dict['size'][1])
 
-            keys = pygame.key.get_pressed()
-            if keys[cls._pygame.K_UP]:
-                camera.move(0, -4)
-            if keys[cls._pygame.K_DOWN]:
-                camera.move(0, 4)
-            if keys[cls._pygame.K_LEFT]:
-                camera.move(-4, 0)
-            if keys[cls._pygame.K_RIGHT]:
-                camera.move(4, 0)
 
             cls._ui_manager.process_events(event)
                     

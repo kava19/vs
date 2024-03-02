@@ -5,6 +5,7 @@ from entity import Entity
 import camera
 import random 
 import numpy as np
+from player import Player
 
 import pygame
 from pygame_gui import *
@@ -19,6 +20,13 @@ logging.basicConfig(
     ]
 )
 
+
+log = logging.getLogger(__name__)
+
+
+
+entity_list = []
+player = None
 spr = None
 bg_tile_map = [None]*256*256
 bg_tiles = None
@@ -36,6 +44,10 @@ def generate_tilemap():
 
 
 def update(delta_time):
+    for entity in entity_list:
+        entity.update(delta_time)
+
+
 
     
     global ui_fps_counter, ui_frame_timer, ui_refresh
@@ -59,9 +71,10 @@ def render():
 
         
     
+    for entity in entity_list:
+        entity.draw()
+        entity.draw_collision_rect()
 
-    spr.draw()
-    spr.draw_collision_rect()
 
 
 
@@ -78,6 +91,11 @@ generate_tilemap()
 spr = Entity(sm.get_sprite("bird.png"), 2700, 2700)
 #spr.set_pos(2600, 2600)
 spr.resize(64, 64)
+
+player = Player(sm.get_sprite("bird.png"), 2750, 2750, 64, 64)
+
+entity_list.append(spr)
+entity_list.append(player)
 
 sm.load_image_tiles("Grass.png", 16, 11, 7, 32)
 

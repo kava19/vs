@@ -12,6 +12,10 @@ def move(dx, dy):
     if y < 0.0:
         y = 0.0
 
+def move_to(px, py):
+    global x, y
+    x = px
+    y = py
 
 
 def get_pos():
