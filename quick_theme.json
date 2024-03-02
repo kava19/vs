@@ -1,0 +1,36 @@
+{
+    "button":
+    {
+        "misc":
+        {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "10",
+            "border_width": "1",
+            "shadow_width": "2"
+        }
+    },
+    "#fps_counter":
+    {
+        "colours":
+        {
+            "normal_text": "#FFFFFF"
+        },
+        "font":
+        {
+            "name": "fira_code",
+            "size": "14"
+        }
+    },
+    "#frame_timer":
+    {
+        "colours":
+        {
+            "normal_text": "#FFFFFF"
+        },
+        "font":
+        {
+            "name": "fira_code",
+            "size": "14"
+        }
+    }
+}
