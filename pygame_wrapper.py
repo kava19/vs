@@ -20,7 +20,7 @@ class PygameWrapper(object):
     _ui_manager = None
     _fps = 60.0
     _delta_time = 0.0
-    surface_width, surface_height = 5000, 5000
+    surface_width, surface_height = 32*256, 32*256
 
     @classmethod
     def get_ui_manager(cls):
@@ -40,17 +40,18 @@ class PygameWrapper(object):
                 elif event.type == cls._pygame.VIDEORESIZE:
                     cls._pygame.display.update()
                     cls.resize_window(event.dict['size'][0], event.dict['size'][1])
-                elif event.type == cls._pygame.KEYDOWN:
-                    if event.key == cls._pygame.K_LEFT:
-                        camera.move(-5, 0)
-                    elif event.key == cls._pygame.K_RIGHT:
-                        camera.move(5, 0)
-                    elif event.key == cls._pygame.K_UP:
-                        camera.move(0, -5)
-                    elif event.key == cls._pygame.K_DOWN:
-                        camera.move(0, 5)
 
-                cls._ui_manager.process_events(event)
+            keys = pygame.key.get_pressed()
+            if keys[cls._pygame.K_UP]:
+                camera.move(0, -4)
+            if keys[cls._pygame.K_DOWN]:
+                camera.move(0, 4)
+            if keys[cls._pygame.K_LEFT]:
+                camera.move(-4, 0)
+            if keys[cls._pygame.K_RIGHT]:
+                camera.move(4, 0)
+
+            cls._ui_manager.process_events(event)
                     
                     
             cls._ui_manager.update(cls._delta_time)

@@ -24,6 +24,7 @@ def get_image(path) -> pygame.Surface:
 def get_sprite(path) -> Sprite:
     return Sprite(get_image(path))
 
+
 def get_images() -> dict:
     return images
 

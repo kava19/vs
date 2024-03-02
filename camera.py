@@ -1,6 +1,6 @@
 
 
-x, y = 0.0, 0.0
+x, y = 2500.0, 2500.0
 
 def move(dx, dy):
     global x, y

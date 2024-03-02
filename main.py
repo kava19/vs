@@ -1,6 +1,7 @@
 from pygame_wrapper import PygameWrapper as pw
 import sprite_manager as sm
 import logging
+from entity import Entity
 import camera
 
 import pygame
@@ -35,6 +36,7 @@ def update(delta_time):
 
 def render():
     spr.draw()
+    spr.draw_collision_rect()
 
 
 
@@ -46,7 +48,8 @@ ui_frame_timer = UILabel(pygame.Rect(10,32,200,24),"Frame time: 0", pw.get_ui_ma
 ui_camera_pos = UILabel(pygame.Rect(10,48,200,24),f"Camera: {camera.get_pos()}", pw.get_ui_manager(),object_id='#camera')
 ui_refresh = pw.get_fps()
 
-spr = sm.get_sprite("bird.png")
+spr = Entity(sm.get_sprite("bird.png"), 2700, 2700)
+#spr.set_pos(2600, 2600)
 spr.resize(64, 64)
 
 pw.loop(update, render)
